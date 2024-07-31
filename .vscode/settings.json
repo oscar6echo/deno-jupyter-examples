@@ -1,12 +1,19 @@
 {
-    "deno.enable": true,
-    "editor.formatOnPaste": false,
-    "editor.formatOnSave": true,
-    "deno.enablePaths": [
-        "./",
-    ],
-    "[typescript]": {
-        "editor.defaultFormatter": "denoland.vscode-deno"
-    },
-    "editor.inlayHints.enabled": "off"
+  "deno.enable": true,
+  // "deno.path": "path/to/deno",
+  // "deno.tlsCertificate": "path/to/corp/cert",
+  // "deno.envFile": "path/to/creds/proxy.env",
+  "deno.enablePaths": [
+    "./",
+  ],
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "editor.tabSize": 2,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "editor.inlayHints.enabled": "off"
 }

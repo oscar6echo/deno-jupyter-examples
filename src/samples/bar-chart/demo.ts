@@ -1,9 +1,11 @@
 import { Displayable } from 'display-format';
-import pl from 'nodejs-polars';
-import { load_data, plot } from './elements.ts';
+import { IDatum, IPlotOptions, load_data, plot } from './elements.ts';
 
-type MethodLoadData = (source: string) => Promise<pl.DataFrame>;
-type MethodPlot = (df: pl.DataFrame) => Promise<void | Displayable | undefined>;
+type MethodLoadData = () => Promise<IDatum[]>;
+type MethodPlot = (
+  data: IDatum[],
+  options: IPlotOptions,
+) => Promise<void | Displayable | undefined>;
 
 interface IMethods {
   _load_data: MethodLoadData;
@@ -16,11 +18,11 @@ interface IUpdateMethods {
 }
 
 class Demo {
-  df: pl.DataFrame;
+  data: IDatum[];
   methods: IMethods;
 
   constructor() {
-    this.df = pl.DataFrame();
+    this.data = [];
 
     this.methods = {
       _load_data: load_data,
@@ -28,12 +30,12 @@ class Demo {
     };
   }
 
-  async load_data(source: string) {
-    this.df = await this.methods._load_data(source);
+  async load_data() {
+    this.data = await this.methods._load_data();
   }
 
-  plot() {
-    return this.methods._plot(this.df);
+  plot(options: IPlotOptions) {
+    return this.methods._plot(this.data, options);
   }
 
   update_methods(methods: IUpdateMethods) {

@@ -1,41 +1,55 @@
 {
-    "lint": {
-        "include": [
-            "src/"
-        ],
-        "exclude": [
-            "./data",
-            "./*.ipynb"
-        ]
-    },
-    "fmt": {
-        "lineWidth": 100,
-        "indentWidth": 2,
-        "semiColons": true,
-        "singleQuote": true,
-        "proseWrap": "preserve",
-        "include": [
-            "src/"
-        ],
-        "exclude": [
-            "./data",
-            "./*.ipynb"
-        ]
-    },
-    "imports": {
-        "@observablehq/plot": "npm:@observablehq/plot@^0.6.15",
-        "@std/assert": "jsr:@std/assert@^1.0.1",
-        "@std/path": "jsr:@std/path@^1.0.2",
-        "@types/d3": "npm:@types/d3@^7.4.3",
-        "d3": "npm:d3@^7.9.0",
-        "display": "https://deno.land/x/display/mod.ts",
-        "linkedom": "npm:linkedom@^0.18.4",
-        "nodejs-polars": "npm:nodejs-polars@^0.14.0",
-        "solar-calculator": "npm:solar-calculator@^0.3.0"
-    },
-    "tasks": {
-        "trial": "deno run --allow-net src/trial.ts",
-        "jupyter": "jupyter lab --port 8999 --no-browser"
-    },
-    "compilerOptions": {}
+  "lint": {
+    "include": [
+      "src/"
+    ],
+    "exclude": [
+      "./data",
+      "./*.ipynb"
+    ]
+  },
+  "fmt": {
+    "lineWidth": 100,
+    "indentWidth": 2,
+    "semiColons": true,
+    "singleQuote": true,
+    "proseWrap": "preserve",
+    "include": [
+      "src/"
+    ],
+    "exclude": [
+      "./data",
+      "./*.ipynb"
+    ]
+  },
+  "imports": {
+    "@observablehq/plot": "npm:@observablehq/plot@^0.6.15",
+    "@std/assert": "jsr:@std/assert@^1.0.1",
+    "@std/path": "jsr:@std/path@^1.0.2",
+    "@types/d3-array": "npm:@types/d3-array@^3.2.1",
+    "@types/d3-axis": "npm:@types/d3-axis@^3.0.6",
+    "@types/d3-dsv": "npm:@types/d3-dsv@^3.0.7",
+    "@types/d3-geo": "npm:@types/d3-geo@^3.1.0",
+    "@types/d3-scale": "npm:@types/d3-scale@^4.0.8",
+    "@types/d3-selection": "npm:@types/d3-selection@^3.0.10",
+    "@types/d3-time": "npm:@types/d3-time@^3.0.3",
+    "d3": "npm:d3@^7.9.0",
+    "d3-array": "npm:d3-array@^3.2.4",
+    "d3-axis": "npm:d3-axis@^3.0.0",
+    "d3-dsv": "npm:d3-dsv@^3.0.1",
+    "d3-geo": "npm:d3-geo@^3.1.1",
+    "d3-scale": "npm:d3-scale@^4.0.2",
+    "d3-selection": "npm:d3-selection@^3.0.0",
+    "d3-time": "npm:d3-time@^3.1.0",
+    "display": "https://deno.land/x/display@v1.1.2/mod.ts",
+    "display-format": "https://deno.land/x/display@v1.1.2/format.ts",
+    "linkedom": "npm:linkedom@^0.18.4",
+    "nodejs-polars": "npm:nodejs-polars@^0.14.0",
+    "solar-calculator": "npm:solar-calculator@^0.2.1"
+  },
+  "tasks": {
+    "trial": "deno run --allow-net --allow-read --allow-sys --allow-ffi src/trial.ts",
+    "jupyter": "jupyter lab --port 8999 --no-browser"
+  },
+  "compilerOptions": {}
 }
