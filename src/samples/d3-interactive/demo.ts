@@ -38,11 +38,17 @@ class Demo {
     return await Deno.jupyter.broadcast(msg_type, opts);
   }
 
+  // // CLOSER TO NATIVE OUTPUT BUT DIFFERENT
   // [Symbol.for('Jupyter.display')]() {
   //   const obj = { r: this.r, color: this.color };
   //   return {
   //     'application/json': obj,
   //   };
+  // }
+
+  // // RENDERS BUT ALSO ERROR
+  // [Symbol.for('Jupyter.display')]() {
+  //   return this.show();
   // }
 
   build_svg(r: number, color: string) {
