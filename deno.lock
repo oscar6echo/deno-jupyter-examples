@@ -635,7 +635,8 @@
   },
   "redirects": {
     "https://deno.land/std/html/mod.ts": "https://deno.land/std@0.224.0/html/mod.ts",
-    "https://deno.land/x/display/mod.ts": "https://deno.land/x/display@v1.1.2/mod.ts"
+    "https://deno.land/x/display/mod.ts": "https://deno.land/x/display@v1.1.2/mod.ts",
+    "https://deno.land/x/sleep/mod.ts": "https://deno.land/x/sleep@v1.3.0/mod.ts"
   },
   "remote": {
     "https://deno.land/std@0.224.0/html/entities.ts": "fd5ac9d459355a377baea118f4e808a1268808fd9138b319c90f11024e2f1718",
@@ -643,7 +644,9 @@
     "https://deno.land/x/display@v0.1.1/format.ts": "d9a14a0db30e7ef0dc294f7d3f211cc1acacdd74ff14dddd9afe1528159bcfde",
     "https://deno.land/x/display@v0.1.1/mod.ts": "f5ba8ee82ca1ae248e9768a3430c6de944fec27dd96b8103e4829dd66c21ea31",
     "https://deno.land/x/display@v1.1.2/format.ts": "1ba3b8c5c1afdae558095479254f2dcef84d8fcd24464ebdd44f65d99e0b0b9e",
-    "https://deno.land/x/display@v1.1.2/mod.ts": "077bedee868852e0f220763d6781d8bcc077f68f0e3269a60e02e93a42c54b70"
+    "https://deno.land/x/display@v1.1.2/mod.ts": "077bedee868852e0f220763d6781d8bcc077f68f0e3269a60e02e93a42c54b70",
+    "https://deno.land/x/sleep@v1.3.0/mod.ts": "e9955ecd3228a000e29d46726cd6ab14b65cf83904e9b365f3a8d64ec61c1af3",
+    "https://deno.land/x/sleep@v1.3.0/sleep.ts": "b6abaca093b094b0c2bba94f287b19a60946a8d15764d168f83fcf555f5bb59e"
   },
   "workspace": {
     "dependencies": [
