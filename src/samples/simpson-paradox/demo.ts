@@ -1,9 +1,8 @@
-import { Displayable } from 'display-format';
 import pl from 'nodejs-polars';
 import { load_data, plot } from './elements.ts';
 
 type MethodLoadData = (source: string) => Promise<pl.DataFrame>;
-type MethodPlot = (df: pl.DataFrame) => Promise<void | Displayable | undefined>;
+type MethodPlot = (df: pl.DataFrame) => string;
 
 interface IMethods {
   _load_data: MethodLoadData;
@@ -32,8 +31,15 @@ class Demo {
     this.df = await this.methods._load_data(source);
   }
 
-  plot() {
-    return this.methods._plot(this.df);
+  async plot() {
+    const html = this.methods._plot(this.df);
+
+    const opts = {
+      data: { 'text/html': html },
+      metadata: {},
+    };
+
+    await Deno.jupyter.broadcast('display_data', opts);
   }
 
   update_methods(methods: IUpdateMethods) {

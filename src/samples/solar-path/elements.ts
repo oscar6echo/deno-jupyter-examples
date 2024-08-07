@@ -1,7 +1,6 @@
 import solar from 'solar-calculator';
 import d3 from '../../common/d3-bis.ts';
-// import { DOMParser } from 'linkedom';
-import { create_html_document } from '../../common/util.ts';
+import { create_html_document, format_date } from '../../common/util.ts';
 
 type Location = {
   latitude: number;
@@ -13,7 +12,6 @@ const build_html = (location: Location) => {
   const _solar = solar([location.longitude, location.latitude]);
 
   const width = 700 + 28;
-  // const width = 960 + 28;
   const height = width;
   const formatHour = (d: Date) =>
     d.toLocaleString('en', { hour: 'numeric', timeZone: location.timeZone }) as string;
@@ -39,7 +37,7 @@ const build_html = (location: Location) => {
     .attr('viewBox', [0, 0, width, height])
     .attr(
       'style',
-      'display: block; margin: 0 -14px; width: 100%; height: auto; font: 10px sans-serif;',
+      'display: block; margin: 0 -14px; width: 100%; height: auto; font: 10px sans-serif; background-color: white',
     )
     .attr('text-anchor', 'middle')
     .attr('fill', 'currentColor');
@@ -120,11 +118,35 @@ const build_html = (location: Location) => {
     .attr('stroke', null)
     .attr('fill', 'black');
 
+  const x_pos = width - 60;
+  const y_pos = 15;
+  const dy = 14;
+
+  svg.append('text')
+    .attr('x', x_pos)
+    .attr('y', y_pos + 0 * dy)
+    .attr('text-anchor', 'start')
+    .text(`${location.timeZone}`);
+
+  svg.append('text')
+    .attr('x', x_pos)
+    .attr('y', y_pos + 1 * dy)
+    .attr('text-anchor', 'start')
+    .text(`lat:  ${location.latitude}`);
+
+  svg.append('text')
+    .attr('x', x_pos)
+    .attr('y', y_pos + 2 * dy)
+    .attr('text-anchor', 'start')
+    .text(`long: ${location.longitude}`);
+
+  const tagDate = svg.append('text')
+    .attr('x', 50)
+    .attr('y', 15);
+
   rootSvg.update = (date: Date) => {
     const start = d3.utcHour.offset(_solar.noon(date), -12);
     const end = d3.utcHour.offset(start, 24);
-
-    console.log({ start, end });
 
     sunPath.attr(
       'd',
@@ -137,7 +159,9 @@ const build_html = (location: Location) => {
     // @ts-ignore: d3 flexibility breaks ts
     hour.select('text:last-of-type').text(formatHour);
 
-    return rootSvg;
+    tagDate.text(`${format_date(date)}`);
+
+    return rootSvg.outerHTML;
   };
 
   return rootSvg;

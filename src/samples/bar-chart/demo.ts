@@ -1,11 +1,10 @@
-import { Displayable } from 'display-format';
 import { IDatum, IPlotOptions, load_data, plot } from './elements.ts';
 
 type MethodLoadData = () => Promise<IDatum[]>;
 type MethodPlot = (
   data: IDatum[],
   options: IPlotOptions,
-) => Promise<void | Displayable | undefined>;
+) => string;
 
 interface IMethods {
   _load_data: MethodLoadData;
@@ -34,8 +33,16 @@ class Demo {
     this.data = await this.methods._load_data();
   }
 
-  plot(options: IPlotOptions) {
-    return this.methods._plot(this.data, options);
+  async plot(options: IPlotOptions) {
+    const svg = this.methods._plot(this.data, options);
+
+    const opts = {
+      data: { 'text/html': svg },
+      // data: { 'image/svg+xml': svg },
+      metadata: {},
+    };
+
+    await Deno.jupyter.broadcast('display_data', opts);
   }
 
   update_methods(methods: IUpdateMethods) {

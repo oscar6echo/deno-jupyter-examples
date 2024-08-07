@@ -1,5 +1,4 @@
 import * as path from '@std/path';
-import { display } from 'display';
 import d3 from '../../common/d3-bis.ts';
 import { create_html_document } from '../../common/util.ts';
 
@@ -26,7 +25,7 @@ const load_data = async () => {
   return data;
 };
 
-const plot = async (data: IDatum[], options: IPlotOptions = {}) => {
+const plot = (data: IDatum[], options: IPlotOptions = {}): string => {
   const { darkMode = true } = options;
   const axisColor = darkMode ? 'white' : 'black';
 
@@ -101,7 +100,7 @@ const plot = async (data: IDatum[], options: IPlotOptions = {}) => {
   gAxisLeft.selectAll('text').attr('fill', axisColor);
   gAxisLeft.selectAll('path').attr('fill', axisColor);
 
-  return await display(rootSvg);
+  return rootSvg.outerHTML;
 };
 
 export { load_data, plot };

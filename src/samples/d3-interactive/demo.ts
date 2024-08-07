@@ -11,7 +11,6 @@ class Demo {
 
   // deno-lint-ignore no-explicit-any
   svg: any;
-
   display_id: string;
 
   constructor(width = 300, height = 50, r = 10, color = 'blue') {
@@ -38,7 +37,7 @@ class Demo {
     return await Deno.jupyter.broadcast(msg_type, opts);
   }
 
-  // // CLOSER TO NATIVE OUTPUT BUT DIFFERENT
+  // // CLOSER TO NATIVE OUTPUT BUT STILL DIFFERENT
   // [Symbol.for('Jupyter.display')]() {
   //   const obj = { r: this.r, color: this.color };
   //   return {
@@ -46,7 +45,7 @@ class Demo {
   //   };
   // }
 
-  // // RENDERS BUT ALSO ERROR
+  // // RENDERS BUT ALSO ERROR !?!!
   // [Symbol.for('Jupyter.display')]() {
   //   return this.show();
   // }

@@ -1,6 +1,5 @@
 import * as Plot from '@observablehq/plot';
 import * as path from '@std/path';
-import { display } from 'display';
 import pl from 'nodejs-polars';
 import { create_html_document, must_be_in } from '../../common/util.ts';
 
@@ -44,7 +43,7 @@ const load_data = async (source: string = 'disk') => {
   return df;
 };
 
-const plot = async (df: pl.DataFrame) => {
+const plot = (df: pl.DataFrame): string => {
   const data = df.toRecords();
   const document = create_html_document();
 
@@ -66,7 +65,7 @@ const plot = async (df: pl.DataFrame) => {
     document,
   });
 
-  return await display(p);
+  return p.outerHTML;
 };
 
 export { load_data, plot };

@@ -19,6 +19,12 @@ import * as d3_scale from 'd3-scale';
 // @ts-types='npm:@types/d3-axis';
 import * as d3_axis from 'd3-axis';
 
+// @ts-types='npm:@types/d3-time-format';
+import * as d3_time_format from 'd3-time-format';
+
+// @ts-types='npm:@types/d3-format';
+import * as d3_format from 'd3-format';
+
 const d3 = {
   ...d3_selection,
   ...d3_array,
@@ -27,6 +33,8 @@ const d3 = {
   ...d3_dsv,
   ...d3_scale,
   ...d3_axis,
+  ...d3_time_format,
+  ...d3_format,
 };
 
 export default d3;
