@@ -40,21 +40,21 @@ const build_html = (location: Location) => {
       'display: block; margin: 0 -14px; width: 100%; height: auto; font: 10px sans-serif; background-color: white',
     )
     .attr('text-anchor', 'middle')
-    .attr('fill', 'currentColor');
+    .attr('fill', 'blackàà');
 
   svg.append('path')
     .attr('d', path(graticule))
     .attr('fill', 'none')
-    .attr('stroke', 'currentColor')
+    .attr('stroke', 'black')
     .attr('stroke-opacity', 0.2);
 
   svg.append('path')
     .attr('d', path(outline))
     .attr('fill', 'none')
-    .attr('stroke', 'currentColor');
+    .attr('stroke', 'black');
 
   svg.append('g')
-    .attr('stroke', 'currentColor')
+    .attr('stroke', 'black')
     .selectAll()
     .data(d3.range(360))
     .join('line')
@@ -72,6 +72,7 @@ const build_html = (location: Location) => {
     .selectAll()
     .data(d3.range(0, 360, 10))
     .join('text')
+    .attr('fill', 'black')
     .attr('dy', '0.35em')
     .text((d) => d === 0 ? 'N' : d === 90 ? 'E' : d === 180 ? 'S' : d === 270 ? 'W' : `${d}°`)
     .attr('font-size', (d) => d % 90 ? null : 14)
@@ -85,6 +86,7 @@ const build_html = (location: Location) => {
     .selectAll()
     .data(d3.range(10, 91, 10)) // every 10°
     .join('text')
+    .attr('fill', 'black')
     .attr('dy', '0.35em')
     .text((d) => `${d}°`)
     .datum((d) => projection([180, d]))
@@ -126,18 +128,21 @@ const build_html = (location: Location) => {
     .attr('x', x_pos)
     .attr('y', y_pos + 0 * dy)
     .attr('text-anchor', 'start')
+    .attr('fill', 'black')
     .text(`${location.timeZone}`);
 
   svg.append('text')
     .attr('x', x_pos)
     .attr('y', y_pos + 1 * dy)
     .attr('text-anchor', 'start')
+    .attr('fill', 'black')
     .text(`lat:  ${location.latitude}`);
 
   svg.append('text')
     .attr('x', x_pos)
     .attr('y', y_pos + 2 * dy)
     .attr('text-anchor', 'start')
+    .attr('fill', 'black')
     .text(`long: ${location.longitude}`);
 
   const tagDate = svg.append('text')
