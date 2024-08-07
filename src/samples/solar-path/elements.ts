@@ -40,7 +40,7 @@ const build_html = (location: Location) => {
       'display: block; margin: 0 -14px; width: 100%; height: auto; font: 10px sans-serif; background-color: white',
     )
     .attr('text-anchor', 'middle')
-    .attr('fill', 'blackàà');
+    .attr('fill', 'black');
 
   svg.append('path')
     .attr('d', path(graticule))
@@ -74,7 +74,8 @@ const build_html = (location: Location) => {
     .join('text')
     .attr('fill', 'black')
     .attr('dy', '0.35em')
-    .text((d) => d === 0 ? 'N' : d === 90 ? 'E' : d === 180 ? 'S' : d === 270 ? 'W' : `${d}°`)
+    .text((d) => d === 0 ? 'N' : d === 90 ? 'E' : d === 180 ? 'S' : d === 270 ? 'W' : `${d}&deg`)
+    // .text((d) => d === 0 ? 'N' : d === 90 ? 'E' : d === 180 ? 'S' : d === 270 ? 'W' : `${d}°`)
     .attr('font-size', (d) => d % 90 ? null : 14)
     .attr('font-weight', (d) => d % 90 ? null : 'bold')
     .datum((d) => projection([d, -4]))
