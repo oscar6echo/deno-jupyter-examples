@@ -74,7 +74,7 @@ const build_html = (location: Location) => {
     .join('text')
     .attr('fill', 'black')
     .attr('dy', '0.35em')
-    .text((d) => d === 0 ? 'N' : d === 90 ? 'E' : d === 180 ? 'S' : d === 270 ? 'W' : `${d}&deg`)
+    .text((d) => d === 0 ? 'N' : d === 90 ? 'E' : d === 180 ? 'S' : d === 270 ? 'W' : `${d}`)
     // .text((d) => d === 0 ? 'N' : d === 90 ? 'E' : d === 180 ? 'S' : d === 270 ? 'W' : `${d}°`)
     .attr('font-size', (d) => d % 90 ? null : 14)
     .attr('font-weight', (d) => d % 90 ? null : 'bold')
@@ -89,7 +89,8 @@ const build_html = (location: Location) => {
     .join('text')
     .attr('fill', 'black')
     .attr('dy', '0.35em')
-    .text((d) => `${d}°`)
+    .text((d) => `${d}`)
+    // .text((d) => `${d}°`)
     .datum((d) => projection([180, d]))
     // @ts-ignore: d3 flexibility breaks ts
     .attr('x', (e) => e === null ? null : e[0]) // x
