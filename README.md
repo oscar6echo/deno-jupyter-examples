@@ -4,7 +4,7 @@ This is a short collections of deno-kernel Juptyer notebooks drawing on:
 
 + polars version for node: [nodejs-polars](https://github.com/pola-rs/nodejs-polars)
 + sample ObservableHQ notebooks
-+ a custom "reload" feature mimicking IPyhton [autoreload magic](https://ipython.org/ipython-doc/3/config/extensions/autoreload.html)
++ a custom "reload" feature mimicking IPython [autoreload magic](https://ipython.org/ipython-doc/3/config/extensions/autoreload.html)
 
 ## Run
 
